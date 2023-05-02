@@ -1,6 +1,6 @@
-#### keypoints
+## keypoints
 
-##### _init_array & _fini_array
+### _init_array & _fini_array
 
 functions registered in `_init_array` and `_fini_array` will be executed before and after main function.
 
@@ -8,23 +8,23 @@ sub_1A20(in _init_array)does some variable initialization and string decoding wo
 
 sub_16C5(in _fini_array)is the key function.
 
-##### pipe IPC
+### pipe IPC
 
 pipe is one of the IPC ways in linux，which can pass data from one process to another in one direction.
 
 In this problem, pipe is used to established a communication channel between parent and child processes. `read`and `write` function are used to read and write data with the channel.
 
-##### Multiprocess prime sieve
+### Multiprocess prime sieve
 
-idea comes from：https://swtch.com/~rsc/thread/，which is the begining of concurrent programming. Those who are interested can have a look。
+idea comes from：https://swtch.com/~rsc/thread/ , which is the begining of concurrent programming. Those who are interested can have a look。
 
 For exanple：initially, the main process get numbers 2-35. It will pick the fist number 2 as `base`, then for each of the rest of numbers, if n mod 2 == 0，it must not be a prime number and will be discarded, otherwise n will be pass to the child process. The child process will also pick the fist number received as `base`(here is 3), then for each of number received after that, if n mod 3 == 0，it must not be a prime number and will be discarded, otherwise n will be pass to the child's child process. It will not stop until no number to pass to child process, and you've got all the primes.
 
-##### Some confusing items
+### Some confusing items
 
 Since the memory space between the parent process and the child process is completely isolated, the modification of global variables in the child process will not affect the parent process. And the final check is completed in the parent process, so some operations in the child process are interference and will not affect the result.
 
-#### Expected solution
+## Expected solution
 
 The expected solution is to restore the encryption logic under the condition of understanding the algorithm, leaving out the prime sieve part of the code，finally bruting force to get the flag (also you can try constraint solving tools like z3).
 
