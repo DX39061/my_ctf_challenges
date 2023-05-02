@@ -25,7 +25,7 @@ void rc4_shuffle(unsigned char *s, unsigned char *key, int key_len) {
 void rc4_gen_keystream(unsigned char *s, int len, unsigned char *key_stream) {
     int i = 0, j = 0, cnt = -1;
     while (len) {
-        i = (i + 1) % 256;   // 可以保证每256次循环后s盒中的每个元素至少被交换一次
+        i = (i + 1) % 256;
         j = (j + s[i]) % 256;
         int tmp = s[i];
         s[i] = s[j];
@@ -69,14 +69,3 @@ int main() {
 
 }
 
-// 2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34
-// 3 9 15 21 27 33
-// 5 25
-// 7 35
-// 11
-// 13
-// 17
-// 19
-// 23
-// 29
-// 31
